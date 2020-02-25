@@ -9,8 +9,9 @@ const alunosDaEscola=[
 ];
 
 
-// implementação
+
 function adicionarAluno(nome) {
+
     alunosDaEscola.push({
         nome,
         notas: [],
@@ -18,9 +19,12 @@ function adicionarAluno(nome) {
         faltas: 0,
     });
     console.log(`Cadastro do Aluno: ${nome} realizado com sucesso.`);
+
 };
 
 function listarAlunos() {
+    
+    //lista objeto aluno no console.
     console.log("==========Lista dos Alunos==========")
     console.log(" ")
     alunosDaEscola.forEach(element => {
@@ -44,17 +48,22 @@ function listarAlunos() {
         console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         console.log("     ");
     });
+
 };
 
 function buscarAluno(nome) {
+
+    //busca string nome no objeto aluno e devolve um objeto
     let [aluno] = alunosDaEscola.filter(el => el.nome === nome);
     res = (aluno) ? "Aluno encontrado" : "Não temos registro desse Aluno";
     console.log(res);
     return aluno;
+
 };
 
 function matricularAluno(aluno, curso){
     
+    //busca string aluno e adiciona curso e new Date
     let verificaSeExisteAluno = buscarAluno(aluno);
     let matriculaNovCurso = {
         nomeDoCurso: curso,
@@ -72,7 +81,8 @@ function matricularAluno(aluno, curso){
 };
 
 function aplicarFalta(aluno){
-    //  Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá incrementar uma falta ao aluno. Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar falta em aluno se o mesmo tiver matriculado em um curso.
+
+    //busca usando objeto aluno incrementa falta de um sempre que chamada
     let verificaSeExisteAluno = buscarAluno(aluno.nome);
     if(verificaSeExisteAluno) {
         let aluno = verificaSeExisteAluno;
@@ -81,6 +91,7 @@ function aplicarFalta(aluno){
     } else {
         console.log("Não foi possivel atribuir falta, aluno não encontrado.");
     }
+
 };
 
 
